@@ -18,6 +18,10 @@ The **standard deviation** represents how far the signal fluctuates from the mea
 
 Better data means a higher SNR value and lower CV value.
 
+## Probability and Statistics
+
+Note there is a difference between statistics on an N point signal and the probability of the underlying process that generated the signal.
+
 **Typical error** in calculating the mean of an underlying process by using a finite number of samples N is given by standard deviation/(N^1/2). The larger N is, the smaller the expected error will become.
 
 Typically, we only know the mean of the N point signal, not the mean of the underlying process that created the signal. This value contains an error due to statistical noise, which reduces the calculated value of the standard deviation. To compensate for this, N is replaced by N - 1 in the calculation of the standard deviation. This provides an estimate of the standard deviation of the underlying process and is more accurate when N is smaller. If we divide by N, that is the standard deviation of the acquired signal.
