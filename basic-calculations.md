@@ -6,7 +6,7 @@ The **alternating current (AC)** refers to how the signal fluctuates around the 
 
 **Average deviation** is found by summing the absolute value of the deviations of each individual sample from the mean and dividing by N. However, this value isn't typically relevant in statistics.
 
-The **standard deviation** represents how far the signal fluctuates from the mean (noise and interference). Only measures the AC portion of a signal. It is calculated by squaring each of the deviations of each sample from the mean before taking the average, then taking the square root of that.
+The **standard deviation** represents how far the signal fluctuates from the mean (noise and interference). Only measures the AC portion of a signal. It is calculated by squaring each of the deviations of each sample from the mean before taking the average, then taking the square root of that. See below on why we divide by N - 1 instead of N.
 
 **Variance** is standard deviation squared and represents the power of this fluctuation.
 
@@ -17,3 +17,15 @@ The **standard deviation** represents how far the signal fluctuates from the mea
 **Coefficient of variation (CV)** = (standard deviation/mean) * 100%
 
 Better data means a higher SNR value and lower CV value.
+
+**Typical error** in calculating the mean of an underlying process by using a finite number of samples N is given by standard deviation/(N^1/2). The larger N is, the smaller the expected error will become.
+
+Typically, we only know the mean of the N point signal, not the mean of the underlying process that created the signal. This value contains an error due to statistical noise, which reduces the calculated value of the standard deviation. To compensate for this, N is replaced by N - 1 in the calculation of the standard deviation. This provides an estimate of the standard deviation of the underlying process and is more accurate when N is smaller. If we divide by N, that is the standard deviation of the acquired signal.
+
+A **histogram** is a measure of the frequency of each possible value in an acquired signal. The corresponding curve for the underlying process is the **probability mass function (pmf).** A histogram is calculated using a finite number of samples, and the pmf would be obtained with an infinite number of samples and can be inferred from the histogram or may be deduced by some mathematical technique. The pmf describes the probability that a certain value will be generated. 
+
+Whereas the histogram and pmf can only be used with discrete data, the **probability density/distribution function (pdf)** is analogous to the pmf on continuous signals. 
+
+The sum of all histogram values must equal N (the number of samples), whereas the sum of all pmf and pdf values must equal 1.
+
+**Binning** is a technique that arbitrarily selects the length of the histogram to be some convenient number such as 1,000 points called bins. The value of each bin represents the total number of samples in the signal that have a value within a certain range. The number of bins controls a tradeoff between resolution along each axis.
